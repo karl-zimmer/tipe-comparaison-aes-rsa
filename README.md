@@ -1,6 +1,6 @@
 # Comparaison de la cryptographie symétrique (AES) et asymétrique (RSA)
 
-TIPE, CPGE MPI (2024-2025). C, OpenSSL (API EVP).
+TIPE, CPGE MPI (2024-2025). C, OpenSSL
 
 ## Objectif
 
