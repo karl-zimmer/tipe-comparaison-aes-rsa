@@ -15,7 +15,7 @@ Comparer les temps de chiffrement et de déchiffrement d'AES-128 (symétrique) e
 
 ## Méthode
 
-- **Données de test** : chaîne de caractères aléatoires générée avec `RAND_bytes`
+- **Données de test** : chaîne de caractères aléatoires générée avec `RAND_bytes` (taille commune)
 - **AES** : AES-128 en mode CBC, vecteur d'initialisation (IV) aléatoire. La clé est une clé de test fixe dans le code, à ne jamais réutiliser.
 - **RSA** : clé de 2048 bits générée à chaque exécution, padding OAEP. Le message est découpé en blocs de 214 octets (taille maximale en OAEP avec une clé de 2048 bits), soit 234 blocs pour 50 000 caractères.
 - **Mesure du temps** : temps réel avec `clock_gettime(CLOCK_MONOTONIC)` pour la génération de clé (RSA), le chiffrement, le déchiffrement et le total.
@@ -32,7 +32,7 @@ Chiffrement hybride : RSA pour échanger une clé de session, AES pour chiffrer 
 - Les résultats dépendent de la machine (notamment des instructions matérielles dédiées à AES, que RSA n'exploite pas de la même façon).
 - Chiffrement et déchiffrement RSA ont des coûts différents (clé publique contre clé privée) : un rapport avec AES doit être donné par opération.
 - Chaque programme effectue une seule mesure par exécution.
-- Le taux d'utilisation du CPU (en %).dépend du logiciel de monitoring.
+- Le taux d'utilisation du CPU (en %) dépend du logiciel de monitoring.
 - La mesure à la prise inclut la consommation de toute la machine, pas seulement celle du processeur, et sa précision dépend de l'appareil utilisé.
 - AES en mode CBC sans authentification : adapté à la mesure de performance, pas à un usage réel
 - La clé AES est fixe dans le code : elle n'a qu'un usage de test.
